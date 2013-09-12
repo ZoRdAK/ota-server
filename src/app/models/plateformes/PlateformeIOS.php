@@ -22,8 +22,8 @@ class PlateformeIOS extends Plateforme
 	 */
 	public function startSpecificDownloadForResource(\Slim\Slim $app, File $File)
 	{
-		if ($app->request()->get('manifest') === null) {
-			$url = 'itms-services://?action=download-manifest&url=' . currentUrl() . '/dl/' . $File->getPath() . '%3Fmanifest';
+		if ($app->request()->get('manifest') !== null) {
+			$url = 'itms-services://?action=download-manifest&url=' . currentUrl() . '/dl/' . $File->getPath();
 			$app->response()->body('<html>
 			<head>
 			<script type="text/javascript">
