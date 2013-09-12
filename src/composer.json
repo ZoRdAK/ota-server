@@ -1,0 +1,17 @@
+{
+    "name": "orange/ota",
+    "description": "Ota server provider",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Karl COSSE",
+            "email": "karl.cosse@orange.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "2.*",
+        "slim/views": "0.1.*",
+        "twig/twig": "1.*",
+        "rodneyrehm/plist": "dev-master"
+    }
+}

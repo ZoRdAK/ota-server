@@ -1,0 +1,10 @@
+{% extends "template.twig" %}
+{% block content %}
+    <p>Choisissez une plateforme</p>
+
+    <ul data-role="listview" data-inset="true" data-filter="false">
+        {% for plateforme in plateformes %}
+            <li><a href="apps/{{ plateforme.id }}">{{ plateforme.nom }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

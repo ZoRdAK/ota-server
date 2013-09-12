@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <title>OTA</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+</head>
+<body>
+<div data-role="page">
+
+    <div data-role="header">
+        {% block header_button_left %}{% endblock %}
+        {% block header %}<h1>OTA</h1>{% endblock %}
+        {% block header_button_right %}{% endblock %}
+    </div>
+
+    <div data-role="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</div>
+<!-- /page -->
+
+</body>
+<script type="text/javascript">
+    $(function () {
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                window.scrollTo(0, 1);
+            }, 0);
+        });
+    })
+</script>
+</html>

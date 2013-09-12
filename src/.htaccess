@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Some hosts may require you to use the `RewriteBase` directive.
+# If you need to use the `RewriteBase` directive, it should be the
+# absolute physical path to the directory that contains this htaccess file.
+#
+# RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+#
+#<IfDefine !development>
+#    AuthName "Page d'administration protégée, veuillez vous identifier"
+#    AuthType Basic
+#    AuthUserFile "/Users/karl/dev/php/ota/src/.htpasswd"
+##    AuthUserFile "/home/ccmd/sites/ota/src/.htpasswd"
+#    Require valid-user
+#</IfDefine>

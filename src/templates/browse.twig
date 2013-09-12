@@ -1,0 +1,56 @@
+{% extends "template.twig" %}
+
+{% block header_button_left %}
+    <a href="{{ currentUrl }}" data-icon="back">accueil</a>
+{% endblock %}
+
+
+{% block header_button_right %}
+    {% if elements|length > 0 %}
+        <a href="#" data-icon="delete" id="delete">supprimer</a>
+    {% endif %}
+{% endblock %}
+
+{% block header %}
+    <h1>Dossiers</h1>
+{% endblock %}
+
+    {% block content %}
+        {% if elements|length > 0 %}
+
+            <fieldset data-role="controlgroup">
+
+                {% for element in elements %}
+                    <input type="checkbox" name="checkbox-{{ loop.index }}" id="checkbox-{{ loop.index }}"
+                           value="{{ element.id }}"
+                           class="custom"/>
+                    <label for="checkbox-{{ loop.index }}">{{ element.chemin }}</label>
+                {% endfor %}
+
+            </fieldset>
+
+
+            <script type="text/javascript">
+                $(function () {
+                    $("#delete").on('click', function () {
+                        var paths = $.map($("input[type=checkbox]:checked"), function (element) {
+                            return element.value;
+                        });
+                        $.ajax({
+                            type: "POST",
+                            url: '{{ currentUrl }}/delete',
+                            data: {'paths': paths},
+                            success: function (data) {
+                                document.location.reload(true);
+                            }
+                        });
+                    });
+                });
+            </script>
+        {% else %}
+            <h3 align="center">Aucun dossier</h3>
+        {% endif %}
+
+
+
+    {% endblock %}
