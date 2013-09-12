@@ -9,30 +9,13 @@ class PlateformeAndroid extends Plateforme
 		parent::__construct($apps, 'android', 'Android');
 	}
 
-	public function startSpecificDownloadForFile(\Slim\Slim $app, $dossier, $fichier)
+
+	/**
+	 * @param $app \Slim\Slim
+	 * @param $File File
+	 */
+	public function startSpecificDownloadForResource(\Slim\Slim $app, File $File)
 	{
-		$app->redirect(toUrl($dossier.'/'.$fichier));
-	}
-
-	public function getDownloadUrl(Version $Version)
-	{
-		$dossier = '/datas/' . $this->id . '/' . $Version->Section->Application->id . '/' . $Version->Section->id . '/' . $Version->id;
-		$exe = $this->getAppFileFromDirectory($dossier);
-
-		if ($exe == null) {
-			return '#';
-		}
-
-		return $dossier . '/' . $exe;
-	}
-
-	public function getDownloadUrlForPath($chemin)
-	{
-		$chemin = '/datas/' . $chemin;
-		if (!file_exists(DIR . $chemin)) {
-			return '#';
-		}
-
-		return $chemin;
+		$app->redirect(toUrl('datas/'.$File->getPath()));
 	}
 }

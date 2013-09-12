@@ -2,17 +2,16 @@
 
 
 
-$app->get('/dl/:plateforme/:dossiers+', function ($p, $chemin) use ($app) {
-	$Plateforme = Plateforme::findById($p);
-	if ($Plateforme === null) {
+$app->get('/dl/:dossiers+', function ($chemin) use ($app) {
+
+
+	$path = rtrim(DIR_DATAS . join('/', $chemin), '/');
+
+	$file = ResourceFactory::fromPath($path);
+	if (!($file instanceof File)) {
 		$app->notFound();
 		$app->stop();
 	}
 
-	$fichier = array_pop($chemin);
-	$dossier = 'datas/' . $Plateforme->id . '/' . join('/', $chemin);
-
-	$Plateforme->startSpecificDownloadForFile($app, $dossier, $fichier);
-
-
+	$file->startDownload($app);
 });

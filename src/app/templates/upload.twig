@@ -138,7 +138,7 @@
             plateforme = getCurrentPlateforme();
             $(".dossier").html('');
 
-            $.getJSON('/browse/' + plateforme, function (applications) {
+            $.getJSON('browse/' + plateforme, function (applications) {
                 $.each(applications, function (index, value) {
                     $(".dossier").append($('<option>').text(value).attr('value', value));
                 });
@@ -161,7 +161,7 @@
                 parent.find('.nouvelle_application').hide();
 
 
-                $.getJSON('/browse/' + plateforme + '/' + application, function (sections) {
+                $.getJSON('browse/' + plateforme + '/' + application, function (sections) {
 
                     parent.nextAll().remove();
 

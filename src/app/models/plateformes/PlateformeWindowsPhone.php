@@ -3,23 +3,17 @@
 
 class PlateformeWindowsPhone extends Plateforme
 {
-    function __construct($apps = null)
-    {
-        parent::__construct($apps, 'wp', 'Windows Phone');
-    }
-
-    public function startSpecificDownloadForFile(\Slim\Slim $app, $dossier, $fichier)
-    {
-        // TODO: Implement startSpecificDownloadForFile() method.
-    }
-
-    public function getDownloadUrl(Version $Version)
-    {
-        return '#';
-    }
-
-	public function getDownloadUrlForPath($chemin)
+	function __construct($apps = null)
 	{
-		return '#';
+		parent::__construct($apps, 'wp', 'Windows Phone');
+	}
+
+	/**
+	 * @param $app \Slim\Slim
+	 * @param $File File
+	 */
+	public function startSpecificDownloadForResource(\Slim\Slim $app, File $File)
+	{
+		//TODO
 	}
 }
