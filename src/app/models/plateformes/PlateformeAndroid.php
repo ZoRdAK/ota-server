@@ -11,9 +11,7 @@ class PlateformeAndroid extends Plateforme
 
 	public function startSpecificDownloadForFile(\Slim\Slim $app, $dossier, $fichier)
 	{
-		header('Content-Type: application/vnd.android.package-archive');
-		header('Content-Disposition: attachment; filename="' . $fichier . '"');
-		readfile(DIR . '/' . $dossier . '/' . $fichier);
+		$app->redirect(toUrl($dossier.'/'.$fichier));
 	}
 
 	public function getDownloadUrl(Version $Version)

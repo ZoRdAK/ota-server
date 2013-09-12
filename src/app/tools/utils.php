@@ -6,6 +6,11 @@ function isJsonCall(\Slim\Slim $app)
 	return strstr($app->request()->headers('Accept'), 'json') !== false;
 }
 
+function toUrl($path = '')
+{
+	return currentUrl() . '/' . $path;
+}
+
 function currentUrl()
 {
 	$pageURL = 'http';
@@ -21,4 +26,18 @@ function currentUrl()
 	}
 
 	return $pageURL;
+}
+
+/**
+ * @param $path String
+ * @return String
+ */
+function strip_datas_dir($path)
+{
+	return str_replace(DIR_DATAS, '', $path);
+}
+
+function is_file_to_skip($file)
+{
+	return $file == '.' || $file == '..' || $file == '_empty' || $file == '.svn' || $file == '.DS_Store';
 }

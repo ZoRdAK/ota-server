@@ -6,7 +6,7 @@ function hiddenFiles()
 }
 
 $app->get('/', function () use ($app) {
-	$app->render('accueil.twig', array(
+	$app->render('home.twig', array(
 		'plateformes' => Plateforme::findAllPlateformes()
 	));
 });

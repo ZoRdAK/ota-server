@@ -2,21 +2,24 @@
 
 require 'vendor/autoload.php';
 
-define('DIR', dirname(__FILE__));
+require 'config.php';
 
 
 $app = new \Slim\Slim(array(
-	'view' => new \Slim\Views\Twig()
+	'view' => initSlimView()
 ));
-$view = $app->view();
-$view->parserDirectory = 'vendor/twig/twig/lib/Twig';
-
 
 require_once 'app/tools/utils.php';
+require_once 'app/models/resource/ResourceFactory.php';
+require_once 'app/models/resource/Resource.php';
+require_once 'app/models/resource/File.php';
+require_once 'app/models/resource/Folder.php';
+require_once 'app/models/resource/UnknownResource.php';
+require_once 'app/models/resource/BaseFolder.php';
 require_once 'app/models/plateformes/Plateforme.php';
 require_once 'app/models/Application.php';
 
-require_once 'app/controllers/accueil.php';
+require_once 'app/controllers/home.php';
 require_once 'app/controllers/browse.php';
 require_once 'app/controllers/delete.php';
 require_once 'app/controllers/download.php';
