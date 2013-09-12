@@ -11,7 +11,7 @@ class File extends Resource
 
 	public function getUrl()
 	{
-		return toUrl("dl/" . $this->getPath().'?manifest');
+		return toUrl("dl/" . $this->getPath());
 	}
 
 	public function startDownload(\Slim\Slim $app)
@@ -33,5 +33,10 @@ class File extends Resource
 	public function getFullPath()
 	{
 		return $this->path;
+	}
+
+	public function getDownloadUrl()
+	{
+		return toUrl('datas/'.$this->getPath());
 	}
 }

@@ -16,6 +16,6 @@ class PlateformeAndroid extends Plateforme
 	 */
 	public function startSpecificDownloadForResource(\Slim\Slim $app, File $File)
 	{
-		$app->redirect(toUrl('datas/'.$File->getPath()));
+		$app->redirect($File->getDownloadUrl());
 	}
 }
