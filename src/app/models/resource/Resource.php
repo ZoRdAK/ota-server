@@ -22,6 +22,11 @@ abstract class Resource
 		return str_replace('_', '', basename($this->path));
 	}
 
+	public function getFullPath()
+	{
+		return $this->path;
+	}
+
 	public function getParent()
 	{
 		if ($this->parent == null) {

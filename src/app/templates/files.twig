@@ -27,8 +27,8 @@
                  data-expanded-icon="arrow-d" data-inset="false">
                 <h2>Fichiers</h2>
                 <ul data-role="listview">
-                    {% for fichier in folder.getFiles() %}
-                        <li><a target="_blank" href="{{ fichier.getUrl() }}">{{ fichier.getName() }}</a></li>
+                    {% for file in folder.getFiles() %}
+                        <li><a target="_blank" href="{{ file.getUrl() }}">{{ file.getName() }}</a></li>
                     {% endfor %}
                 </ul>
             </div>

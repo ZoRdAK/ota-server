@@ -2,12 +2,8 @@
 
 
 
-$app->get('/dl/:dossiers+', function ($chemin) use ($app) {
-
-
-	$path = rtrim(DIR_DATAS . join('/', $chemin), '/');
-
-	$file = ResourceFactory::fromPath($path);
+$app->get('/dl/:dossiers+', function ($folders) use ($app) {
+	$file = ResourceFactory::fromPath($folders);
 	if (!($file instanceof File)) {
 		$app->notFound();
 		$app->stop();

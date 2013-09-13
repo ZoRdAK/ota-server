@@ -22,9 +22,9 @@
 
                 {% for element in elements %}
                     <input type="checkbox" name="checkbox-{{ loop.index }}" id="checkbox-{{ loop.index }}"
-                           value="{{ element.id }}"
+                           value="{{ element.getPath() }}"
                            class="custom"/>
-                    <label for="checkbox-{{ loop.index }}">{{ element.chemin }}</label>
+                    <label for="checkbox-{{ loop.index }}">{{ element.getPath()|replace({'/':' / '}) }}</label>
                 {% endfor %}
 
             </fieldset>
@@ -38,7 +38,7 @@
                         });
                         $.ajax({
                             type: "POST",
-                            url: '{{ currentUrl }}/delete',
+                            url: '{{ "/delete"|toUrl }}',
                             data: {'paths': paths},
                             success: function (data) {
                                 document.location.reload(true);

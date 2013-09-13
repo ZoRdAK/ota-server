@@ -17,3 +17,19 @@ function initSlimView()
 
 	return $twig;
 }
+
+
+function hiddenFiles()
+{
+	return array(
+		'.',
+		'..',
+		'_empty',
+		'.svn',
+		'.git',
+		'.DS_Store',
+		'ios',
+		'android',
+		'wp'
+	);
+}
