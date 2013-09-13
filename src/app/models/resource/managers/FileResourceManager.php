@@ -31,6 +31,11 @@ class FileResourceManager implements ResourceManager
 		return rtrim($path, '/') == rtrim(DIR_DATAS, '/');
 	}
 
+	public function isPlateformeFolder($path)
+	{
+		return Plateforme::findById(str_replace(DIR_DATAS,'',$path)) !== null;
+	}
+
 	/**
 	 * @param $Resource Resource
 	 */
@@ -62,4 +67,11 @@ class FileResourceManager implements ResourceManager
 		}
 		return $elements;
 	}
+
+	public function addFile($filename, $srcFile, $folder)
+	{
+		@mkdir($folder, 0777, true);
+		return move_uploaded_file($srcFile, $folder . '/' . $filename);
+	}
+
 }

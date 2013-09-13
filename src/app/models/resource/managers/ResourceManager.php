@@ -15,4 +15,8 @@ interface ResourceManager {
 	public function delete($Resource);
 
 	public function findAll();
+
+	public function addFile($filename, $srcFile, $folder);
+
+	public function isPlateformeFolder($path);
 }

@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class Resource
+abstract class Resource implements JsonSerializable
 {
 	protected $name;
 	protected $path;
@@ -38,6 +38,10 @@ abstract class Resource
 			}
 		}
 		return $this->parent;
+	}
+
+	public function jsonSerialize(){
+		return $this->getName();
 	}
 
 	public abstract function getUrl();

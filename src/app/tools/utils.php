@@ -3,12 +3,12 @@
 
 function isJsonCall(\Slim\Slim $app)
 {
-	return strstr($app->request()->headers('Accept'), 'json') !== false;
+	return strstr($app->request()->headers('Accept'), 'json') !== false || strstr($app->request()->headers('Content-Type'), 'json') !== false;
 }
 
 function toUrl($path = '')
 {
-	return currentUrl() . '/' . $path;
+	return currentUrl() . '/' . ltrim($path, '/');
 }
 
 function currentUrl()

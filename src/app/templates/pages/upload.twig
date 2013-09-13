@@ -92,35 +92,18 @@
             }
             return application;
         };
-        var getCurrentSection = function () {
-            section = $.trim($("#sections").val());
-            if (!section) {
-                section = $.trim($("#nouvelle_section input").val());
-                if (!section) {
-                    throw {'message': 'Merci de choisir une section'};
-                }
-            }
-            return section;
-        };
-        var getCurrentVersion = function () {
-            build = $.trim($("#build").val());
-            if (!build) {
-                throw {'message': 'Merci de choisir un build'};
-            }
-            return build;
-        };
 
         var uploadApplication = function (event) {
             try {
-                var dossiers = $.map($(".dossier-group") ,function(div) {
+                var dossiers = $.map($(".dossier-group"), function (div) {
                     var div = $(div);
-                    if ( div.find('.dossier').val() ){
+                    if (div.find('.dossier').val()) {
                         return div.find('.dossier').val();
                     } else {
                         return div.find('input').val();
                     }
                 });
-                var url = '/upload/' + getCurrentPlateforme() + '/' + dossiers.join('/');
+                var url = 'apps/' + getCurrentPlateforme() + '/' + dossiers.join('/');
                 if ($.trim($("#file").val()) == '') {
                     throw {'message': 'Merci de choisir un fichier apk ou ipa'};
                 }
@@ -138,14 +121,16 @@
             plateforme = getCurrentPlateforme();
             $(".dossier").html('');
 
-            $.getJSON('browse/' + plateforme, function (applications) {
-                $.each(applications, function (index, value) {
+            $.getJSON('apps/' + plateforme, function (folder) {
+                $.each(folder.folders, function (index, value) {
                     $(".dossier").append($('<option>').text(value).attr('value', value));
                 });
                 $(".dossier").append($('<option>').text('ajouter...').attr('value', ''));
 
             });
-            event.preventDefault();
+            if (event) {
+                event.preventDefault();
+            }
         };
 
         var getSections = function (event) {
@@ -161,7 +146,7 @@
                 parent.find('.nouvelle_application').hide();
 
 
-                $.getJSON('browse/' + plateforme + '/' + application, function (sections) {
+                $.getJSON('apps/' + plateforme + '/' + application, function (folder) {
 
                     parent.nextAll().remove();
 
@@ -170,7 +155,7 @@
                             .remove();
                     var select = nouveauGroupe.find('.dossier');
 
-                    $.each(sections, function (index, value) {
+                    $.each(folder.folders, function (index, value) {
                         select.append($('<option>').text(value).attr('value', value));
                     });
                     select.append($('<option>').text('ajouter...').attr('value', ''));

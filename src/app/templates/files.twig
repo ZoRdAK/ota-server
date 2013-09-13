@@ -9,6 +9,10 @@
 {% endblock %}
 
     {% block content %}
+        {% if folder.hasFolders() == false and folder.hasFiles() == false %}
+            <p align="center">Oups.. il n'y a rien ici</p>
+        {% endif %}
+
         {% if folder.hasFolders() %}
             <ul data-role="listview" data-inset="true" data-filter="false">
 
