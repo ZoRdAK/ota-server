@@ -1,7 +1,7 @@
 {% extends "template.twig" %}
 
 {% block header_button_left %}
-    <a href="{{ '/' | toUrl }}" data-icon="home" data-ajax="false">home</a>
+    <a href="{{ parent_url }}" data-icon="back" data-ajax="false">{{ parent }}</a>
 {% endblock %}
 
 {% block content %}
