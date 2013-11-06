@@ -3,6 +3,7 @@
 
 
 define('PROJECT_INDEX', 1);
+define('GLOBAL_PROJECT', 'global');
 class Auth extends \Slim\Middleware
 {
 
@@ -21,7 +22,7 @@ class Auth extends \Slim\Middleware
                 $currentUser = $_SERVER['PHP_AUTH_USER'];
 
                 $projects = array();
-                $currentProject = 'global';
+                $currentProject = GLOBAL_PROJECT;
                 foreach (explode("\n", file_get_contents(DIR . '/.htpasswd')) as $k => $line) {
                     if (trim($line) == '') {
                         continue;
@@ -39,7 +40,7 @@ class Auth extends \Slim\Middleware
                 }
 
                 $project = $folders[PROJECT_INDEX];
-                if (!isset($projects[$project]) || !in_array($currentUser, $projects[$project])) {
+                if ( !in_array($currentUser, $projects[GLOBAL_PROJECT]) && ( !isset($projects[$project]) || !in_array($currentUser, $projects[$project]))) {
                     header('WWW-Authenticate: Basic realm="Projet protege"');
                     header('HTTP/1.0 401 Unauthorized');
                     $this->app->render('pages/unauthorized.twig');
