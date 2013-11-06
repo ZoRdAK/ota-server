@@ -8,11 +8,9 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
-#
-#<IfDefine !development>
-#    AuthName "Page d'administration protégée, veuillez vous identifier"
-#    AuthType Basic
-#    AuthUserFile "/Users/karl/dev/php/ota/src/.htpasswd"
-##    AuthUserFile "/home/ccmd/sites/ota/src/.htpasswd"
-#    Require valid-user
-#</IfDefine>
+
+
+#AuthName "Secured Area"
+#AuthType Basic
+#AuthUserFile "/full/path/to/.htpasswd"
+#Require valid-user
