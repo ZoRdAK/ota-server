@@ -4,7 +4,7 @@
 
     <ul data-role="listview" data-inset="true" data-filter="false">
         {% for plateforme in plateformes %}
-            <li><a href="apps/{{ plateforme.id }}">{{ plateforme.nom }}</a></li>
+            <li><a data-ajax="false" href="apps/{{ plateforme.id }}">{{ plateforme.nom }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

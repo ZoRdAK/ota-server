@@ -3,11 +3,16 @@
 require 'vendor/autoload.php';
 
 require 'config.php';
+require 'app/middlewares/auth.php';
 
 
 $app = new \Slim\Slim(array(
 	'view' => initSlimView()
 ));
+$app->add(new Auth());
+$app->get('/logout', function() use ($app) {
+    $app->redirect(str_replace('://','://logout@',currentUrl()));
+});
 
 require_once DIR . '/app/tools/utils.php';
 require_once DIR . '/app/models/resource/ResourceFactory.php';

@@ -1,7 +1,7 @@
 {% extends "template.twig" %}
 
 {% block header_button_left %}
-    <a href="{{ folder.getParent().getUrl() }}" data-icon="back">{{ folder.getParent().getName() }}</a>
+    <a href="{{ folder.getParent().getUrl() }}" data-icon="back" data-ajax="false">{{ folder.getParent().getName() }}</a>
 {% endblock %}
 
 {% block header %}
@@ -18,7 +18,7 @@
 
                 {% for dossier in folder.getFolders() %}
                     <li>
-                        <a href="{{ dossier.getUrl() }}">
+                        <a data-ajax="false" href="{{ dossier.getUrl() }}">
                             &#9654; {{ dossier.getName() }}
                         </a></li>
                 {% endfor %}

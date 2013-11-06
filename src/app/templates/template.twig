@@ -15,7 +15,10 @@
     <div data-role="header">
         {% block header_button_left %}{% endblock %}
         {% block header %}<h1>OTA</h1>{% endblock %}
-        {% block header_button_right %}{% endblock %}
+        {% block header_button_right %}
+            <a href="{{ '/logout' | toUrl }}" data-icon="delete" data-iconpos="right" data-ajax="false"
+               class="ui-btn-right">logout</a>
+        {% endblock %}
     </div>
 
     <div data-role="content">
