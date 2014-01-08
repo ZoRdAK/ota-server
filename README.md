@@ -68,8 +68,7 @@ Basic example of a virtual host Apache conf for ota-server.
 
 	DocumentRoot /home/toto/ota-server/src
 	<Directory /home/toto/ota-server/src/>
-		Options Indexes FollowSymLinks MultiViews
-		AllowOverride None
+		AllowOverride All
 		Order allow,deny
 		allow from all
 	</Directory>
