@@ -44,7 +44,19 @@ user2:$apr1$cm9ym5tz$x94/IGrEdKHiRQqUifU7n.
 user3:$apr1$J8tR2T63$6iN7R5lai/Rbx5jQnqPi9/
 ```
 
+PHP configuration
+================
 
+ota-server allows user to upload/download ipa files. As ipa files can be big, you should certainly increase your PHP's file upload limit in your php.ini.
+
+For instance, php.ini is typically located at /etc/php5/apache2/php.ini
+
+Edit this file and add:
+
+```
+file_uploads = On
+upload_max_filesize = 20M //needs to be in {x}M format
+```
 
 upload from curl
 ================
