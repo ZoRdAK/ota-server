@@ -44,6 +44,19 @@ user2:$apr1$cm9ym5tz$x94/IGrEdKHiRQqUifU7n.
 user3:$apr1$J8tR2T63$6iN7R5lai/Rbx5jQnqPi9/
 ```
 
+Apache conf
+================
+
+`mod_rewrite` must be enabled on Apache.
+
+For instance, on Debian you should do:
+
+```
+a2enmod rewrite
+service apache2 restart
+```
+
+
 Virtual Host configuration example
 ================
 
