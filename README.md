@@ -56,6 +56,16 @@ a2enmod rewrite
 service apache2 restart
 ```
 
+permissions directory setup
+================
+
+Your Apache user must have write access to `datas` folder, that will contains uploaded ipa files.
+
+For instance, if your Apache user is `www-data`, 
+
+	chown -R www-data datas
+	
+should be sufficient.
 
 Virtual Host configuration example
 ================
