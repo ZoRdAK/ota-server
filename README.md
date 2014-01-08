@@ -44,6 +44,31 @@ user2:$apr1$cm9ym5tz$x94/IGrEdKHiRQqUifU7n.
 user3:$apr1$J8tR2T63$6iN7R5lai/Rbx5jQnqPi9/
 ```
 
+Virtual Host configuration example
+================
+
+Basic example of a virtual host Apache conf for ota-server.
+
+```
+<VirtualHost *:80>
+	ServerName toto.net
+
+	DocumentRoot /home/toto/ota-server/src
+	<Directory /home/toto/ota-server/src/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	ErrorLog /home/toto/logs/error.log
+	CustomLog /home/toto/logs/access.log common
+
+	LogLevel warn
+
+</VirtualHost>
+```
+
 PHP configuration
 ================
 
