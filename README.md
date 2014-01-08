@@ -56,6 +56,7 @@ Edit this file and add:
 ```
 file_uploads = On
 upload_max_filesize = 20M //needs to be in {x}M format
+post_max_size = 20M 
 ```
 
 upload from curl
