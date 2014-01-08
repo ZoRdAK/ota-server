@@ -44,7 +44,67 @@ user2:$apr1$cm9ym5tz$x94/IGrEdKHiRQqUifU7n.
 user3:$apr1$J8tR2T63$6iN7R5lai/Rbx5jQnqPi9/
 ```
 
+Apache conf
+================
 
+`mod_rewrite` must be enabled on Apache.
+
+For instance, on Debian you should do:
+
+```
+a2enmod rewrite
+service apache2 restart
+```
+
+permissions directory setup
+================
+
+Your Apache user must have write access to `datas` folder, that will contains uploaded ipa files.
+
+For instance, if your Apache user is `www-data`, 
+
+	chown -R www-data datas
+	
+should be sufficient.
+
+Virtual Host configuration example
+================
+
+Basic example of a virtual host Apache conf for ota-server.
+
+```
+<VirtualHost *:80>
+	ServerName toto.net
+
+	DocumentRoot /home/toto/ota-server/src
+	<Directory /home/toto/ota-server/src/>
+		AllowOverride All
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	ErrorLog /home/toto/logs/error.log
+	CustomLog /home/toto/logs/access.log common
+
+	LogLevel warn
+
+</VirtualHost>
+```
+
+PHP configuration
+================
+
+ota-server allows user to upload/download ipa files. As ipa files can be big, you should certainly increase your PHP's file upload limit in your php.ini.
+
+For instance, php.ini is typically located at /etc/php5/apache2/php.ini
+
+Edit this file and add:
+
+```
+file_uploads = On
+upload_max_filesize = 20M //needs to be in {x}M format
+post_max_size = 20M 
+```
 
 upload from curl
 ================
