@@ -19,10 +19,10 @@ Allow from env=allow
 Satisfy any
 ```
 
-Note that this .htaccess disable protection for apk files, due to a bug with .htacces on some Android browsers (more information here <http://blog.hoachuck.biz/blog/2012/11/22/cannot-download-apk-file-while-using-htaccess-auth/>)
+Note that this .htaccess disable protection for apk files, due to a bug with .htaccess on some Android browsers (more informations [here](http://blog.hoachuck.biz/blog/2012/11/22/cannot-download-apk-file-while-using-htaccess-auth/)).
 
 
-Use .htpasswd to secure your OTA Server. You can have one account that restricts access to all project, or a per-project protection
+Use .htpasswd to secure your OTA Server. You can have one account that restricts access to all project, or a per-project/per-user protection.
 
 One account for all projects example :
 
@@ -51,7 +51,7 @@ user2:$apr1$cm9ym5tz$x94/IGrEdKHiRQqUifU7n.
 user3:$apr1$J8tR2T63$6iN7R5lai/Rbx5jQnqPi9/
 ```
 
-Project name are case sensitive: for instance if you want to restrict access of http://my-ota-server/apps/ios/SuperApp to user toto, your .htpasswd must contains this line:
+Project name is case sensitive: for instance, if you want to restrict access of http://my-ota-server.net/apps/ios/SuperApp to user toto, your .htpasswd must contains this line:
 
 	#SuperApp
 	toto:$apr1$1O5NPEc4$pVIypAX9QKWKwA/fM25Oy.
@@ -87,7 +87,8 @@ Basic example of a virtual host Apache conf for ota-server.
 
 ```
 <VirtualHost *:80>
-	ServerName toto.net
+
+	ServerName my-ota-server.net
 
 	DocumentRoot /home/toto/ota-server/src
 	<Directory /home/toto/ota-server/src/>
