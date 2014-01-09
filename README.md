@@ -6,7 +6,7 @@ Deploy and install over the air your iOS &amp; Android apps like a breeze. Works
 project security
 ================
 
-Add this to your .htaccess (edit the path for .htpasswd).
+Add this to your .htaccess (edit the path for .htpasswd):
 
 ```
 AuthName "Secured Area"
@@ -24,7 +24,7 @@ Note that this .htaccess disable protection for apk files, due to a bug with .ht
 
 Use .htpasswd to secure your OTA Server. You can have one account that restricts access to all project, or a per-project/per-user protection.
 
-One account for all projects example :
+One account for all projects example:
 
 ```
 global-user:$apr1$V4y4mlgu$D688WrBqz8P.RD9gweVSU.
@@ -83,7 +83,7 @@ should be sufficient.
 Virtual Host configuration example
 ================
 
-Basic example of a virtual host Apache conf for ota-server.
+Basic example of a virtual host Apache conf for ota-server:
 
 ```
 <VirtualHost *:80>
