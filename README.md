@@ -6,24 +6,31 @@ Deploy and install over the air your iOS &amp; Android apps like a breeze. Works
 project security
 ================
 
-Add this to your .htaccess (edit the path for .htpasswd)
+Add this to your .htaccess (edit the path for .htpasswd):
 
 ```
 AuthName "Secured Area"
 AuthType Basic
 AuthUserFile "/full/path/to/.htpasswd"
 Require valid-user
+SetEnvIf Request_URI "(.*\.apk)$"  allow
+Order allow,deny
+Allow from env=allow
+Satisfy any
 ```
 
-Use .htpasswd to secure your OTA Server.
+Note that this .htaccess disable protection for apk files, due to a bug with .htaccess on some Android browsers (more informations [here](http://blog.hoachuck.biz/blog/2012/11/22/cannot-download-apk-file-while-using-htaccess-auth/)).
 
-One account for all projects example :
+
+Use .htpasswd to secure your OTA Server. You can have one account that restricts access to all project, or a per-project/per-user protection.
+
+One account for all projects example:
 
 ```
 global-user:$apr1$V4y4mlgu$D688WrBqz8P.RD9gweVSU.
 ```
 
-One account for all projects and one account only to project "my-project" :
+One account for all projects and one account only to project "my-project":
 
 ```
 global-user:$apr1$V4y4mlgu$D688WrBqz8P.RD9gweVSU.
@@ -43,6 +50,12 @@ user2:$apr1$cm9ym5tz$x94/IGrEdKHiRQqUifU7n.
 user2:$apr1$cm9ym5tz$x94/IGrEdKHiRQqUifU7n.
 user3:$apr1$J8tR2T63$6iN7R5lai/Rbx5jQnqPi9/
 ```
+
+Project name is case sensitive: for instance, if you want to restrict access of http://my-ota-server.net/apps/ios/SuperApp to user toto, your .htpasswd must contains this line:
+
+	#SuperApp
+	toto:$apr1$1O5NPEc4$pVIypAX9QKWKwA/fM25Oy.
+
 
 Apache conf
 ================
@@ -70,11 +83,12 @@ should be sufficient.
 Virtual Host configuration example
 ================
 
-Basic example of a virtual host Apache conf for ota-server.
+Basic example of a virtual host Apache conf for ota-server:
 
 ```
 <VirtualHost *:80>
-	ServerName toto.net
+
+	ServerName my-ota-server.net
 
 	DocumentRoot /home/toto/ota-server/src
 	<Directory /home/toto/ota-server/src/>
