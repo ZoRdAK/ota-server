@@ -1,7 +1,6 @@
 <?php
 
 
-
 class Folder extends Resource
 {
 	private $childs = null;
@@ -20,7 +19,7 @@ class Folder extends Resource
 	{
 		if ($this->childs === null) {
 			$this->childs = array('files' => array(), 'folders' => array());
-			$fs = scandir($this->path, 1);
+			$fs = scan_dir($this->path, 1);
 			foreach ($fs as $fichier) {
 				if (is_file_to_skip($fichier)) {
 					continue;

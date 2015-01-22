@@ -47,7 +47,7 @@ abstract class Plateforme
 	{
 		$applications = array();
 		$dossier = DIR . '/datas/' . $this->id;
-		$fichiers = scandir($dossier);
+		$fichiers = scan_dir($dossier);
 		foreach ($fichiers as $fichier) {
 			if ($fichier == '.' || $fichier == '..') {
 				continue;
