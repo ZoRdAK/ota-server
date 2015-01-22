@@ -8,7 +8,7 @@
 
 
 {% block header_button_right %}
-    
+
 {% endblock %}
 
 {% block header %}
@@ -41,6 +41,9 @@
             <script type="text/javascript">
                 $(function () {
                     $(".btn-delete").on('click', function () {
+                        if ( !confirm('Confirmer la suppression ?') ){
+                            return;
+                        }
                         var elt = $(this);
                         var path = {value: elt.attr('rel')};
                         $.ajax({
