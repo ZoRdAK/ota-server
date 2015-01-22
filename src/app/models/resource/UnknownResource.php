@@ -7,4 +7,9 @@ class UnknownResource extends Resource {
 	{
 		return '#';
 	}
+
+	public function isFolder()
+	{
+		return false;
+	}
 }

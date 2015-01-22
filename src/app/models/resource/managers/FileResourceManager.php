@@ -51,6 +51,22 @@ class FileResourceManager implements ResourceManager
 		}
 	}
 
+	public function findInPath($path){
+		$path = realpath(DIR_DATAS.$path);
+
+		$elements = array();
+
+		$objects = new DirectoryIterator($path);
+		foreach ($objects as $name => $object) {
+			if (in_array($object->getFilename(), hiddenStandardFiles())) {
+				continue;
+			}
+			$element = ResourceFactory::fromPath($path.DIRECTORY_SEPARATOR.$object->getFilename());
+			$elements[] = $element;
+		}
+		return $elements;
+	}
+
 	public function findAll()
 	{
 		$path = realpath(DIR_DATAS);

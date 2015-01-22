@@ -14,6 +14,8 @@ interface ResourceManager {
 	 */
 	public function delete($Resource);
 
+	public function findInPath($path);
+
 	public function findAll();
 
 	public function addFile($filename, $srcFile, $folder);

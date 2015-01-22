@@ -73,4 +73,9 @@ class ResourceFactory
 		}
 		return false;
 	}
+
+	public static function findInPath($path)
+	{
+		return static::$ResourceManager->findInPath($path);
+	}
 }

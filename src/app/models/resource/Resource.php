@@ -45,4 +45,6 @@ abstract class Resource implements JsonSerializable
 	}
 
 	public abstract function getUrl();
+
+	public abstract function isFolder();
 }

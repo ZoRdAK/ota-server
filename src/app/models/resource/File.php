@@ -39,4 +39,9 @@ class File extends Resource
 	{
 		return toUrl('datas/'.$this->getPath());
 	}
+
+	public function isFolder()
+	{
+		return false;
+	}
 }
