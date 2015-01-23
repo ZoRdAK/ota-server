@@ -19,7 +19,7 @@ class Folder extends Resource
 	{
 		if ($this->childs === null) {
 			$this->childs = array('files' => array(), 'folders' => array());
-			$fs = scandir($this->path);
+			$fs = scan_dir($this->path);
 			foreach ($fs as $fichier) {
 				if (is_file_to_skip($fichier)) {
 					continue;
