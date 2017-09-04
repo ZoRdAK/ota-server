@@ -86,7 +86,9 @@ class FileResourceManager implements ResourceManager
 
 	public function addFile($filename, $srcFile, $folder)
 	{
-		@mkdir($folder, 0777, true);
+        if ( !is_dir($folder) ) {
+            @mkdir($folder, 0777, true);
+        }
 		return move_uploaded_file($srcFile, $folder . '/' . $filename);
 	}
 

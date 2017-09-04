@@ -1,2 +1,3 @@
-src/datas/ios/monreseau/dev.ipa
-src/datas/ios/monreseau/prod.ipa
+src/datas/ios/*
+src/datas/android/*
+src/datas/wp/*

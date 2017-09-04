@@ -29,9 +29,10 @@ class PlateformeIOS extends Plateforme
 			<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 			<title>Redirection en cours</title>
 			</head>
-			<body>
+			<body style="text-align: center">
 			<h1>redirection en cours</h1>
-			<a href="' . $url . '">cliquer ici pour installer l\'application</a>
+			<a href="' . $url . '">cliquer ici pour installer l\'application</a><br /><br />
+			<a href="' . currentUrl().'/datas/'.$File->getPath() . '">cliquer ici pour télécharger le fichier IPA</a>
 			<script type="text/javascript">
 				setTimeout(function(){
 					window.location.href = "' . $url . '";
